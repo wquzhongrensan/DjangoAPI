@@ -88,6 +88,7 @@ class Questionnaires(View):
         data = json.loads(request.body.decode())
         questionnaire = Questionnaire(title=data.get('title'))
         questionnaire.save()
+        #  提交只返回结果 不返回对应实体
         return JsonResponse({'msg': 'success save'})
 
 
@@ -97,6 +98,7 @@ class QuestionnaireDetail(View):
     def get(self, request, questionnaire_id):
         questionnaire = Questionnaire.objects.get(id=questionnaire_id)
         data = questionnaire.questionnaire_to_dict()
+        # 返回json
         return JsonResponse(data)
 
 # 获取所有问题对象数据，及添加问题对象

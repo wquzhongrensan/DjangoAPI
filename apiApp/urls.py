@@ -23,13 +23,14 @@ urlpatterns = [
 
     # path(r'testapi/<str:version>/detail/', xxxxx.as_view()),
 
+    # 通过django 自身
     url(r'^questions/$', Questions.as_view(), name='questions'),
     url(r'^questionnaire/(?P<questionnaire_id>\d+)/$', QuestionnaireDetail.as_view(), name='questionnaire'),
     url(r'^questionnaires/$', Questionnaires.as_view(), name='questionnaires'),
 
     url(r'^question/(?P<question_id>\d+)/$', QuestionDetail.as_view(), name='question'),
 
-
+    # 通过 django rest framework
     url(r'^questions/$',QuestionList.as_view(),name='questions'),
     url(r'^questionnaire/(?P<pk>\d+)/$',Questionnaire_Detail.as_view(),name='questionnaire'),
     url(r'^questionnaires/$',QuestionnaireList.as_view(),name='questionnaires'),

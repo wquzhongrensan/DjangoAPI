@@ -1,4 +1,5 @@
 from django.contrib import admin
+# 需要导入文件
 from apiApp.models import TestModel, Snippet, Group
 
 # Register your models here.
@@ -10,6 +11,7 @@ class TestModelAdmin(admin.ModelAdmin):
 
 @admin.register(Snippet)
 class SnippetAdmin(admin.ModelAdmin):
+    # 属性 需要在后台管理系统显示的字段
     list_display = ('created', 'title', 'code', 'linenos', 'group')
 
 

@@ -37,6 +37,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 class ChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Choice
+        # 指定需要序列化的字段
         fields = ('content', 'question')
 
 
