@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from apiApp.models import TestModel, Snippet, Group
 from apiApp.serializers import TestModelSerializer, SnippetSerializers, GroupSerializers
 from rest_framework.versioning import URLPathVersioning
-
+from rest_framework.views import APIView
 from apiApp.models import Question, Questionnaire, Choice
 from django.http import JsonResponse
 from django.views import View
@@ -152,4 +152,58 @@ class QuestionDetail(View):
         question = Question.objects.get(id=question_id)
         data = question.question_to_dict()
         return JsonResponse(data)
+
+
+class QuestionnaireList(APIView):
+    def get(self, request):
+        questionnaire = Questionnaire.objects.all()
+        serializer = QuestionnaireSerializer(questionnaire, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = QuestionnaireSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+
+class Questionnaire_Detail(APIView):
+    def get_object(self, pk):
+        try:
+            return Questionnaire.objects.get(pk=pk)
+        except Questionnaire.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        questionnaire = self.get_object(pk)
+        serializer = QuestionnaireSerializer(questionnaire)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        questionnaire = self.get_object(pk)
+        serializer = QuestionSerializer(questionnaire, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+    def delete(self, request, pk):
+        questionnaire = self.get_object(pk)
+        questionnaire.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class QuestionList(APIView):
+    def get(self, request):
+        question = Question.objects.all()
+        serializer = QuestionSerializer(question, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = QuestionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apiApp.models import TestModel, Snippet, Group
+from apiApp.models import TestModel, Snippet, Group, Question, Questionnaire, Choice
 
 class TestModelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,3 +19,23 @@ class GroupSerializers(serializers.ModelSerializer):
     class Meta:
         model = Group
         fields = '__all__'
+
+
+#  使用Django rest framework 的方式实现同样的功能
+class QuestionnaireSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Questionnaire
+        fields = ('title',)
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = ('title', 'is_checkbox', 'questionnaire')
+
+
+class ChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Choice
+        fields = ('content', 'question')
+

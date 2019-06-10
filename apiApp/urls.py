@@ -5,6 +5,8 @@ from apiApp import views
 from rest_framework.documentation import include_docs_urls
 from apiApp.views import Questions, Questionnaires, QuestionDetail, QuestionnaireDetail
 
+from apiApp.views import Questionnaire_Detail, QuestionnaireList, QuestionList
+
 API_TITLE = 'API Documents'
 API_DESCRITION = 'API Information'
 
@@ -26,6 +28,11 @@ urlpatterns = [
     url(r'^questionnaires/$', Questionnaires.as_view(), name='questionnaires'),
 
     url(r'^question/(?P<question_id>\d+)/$', QuestionDetail.as_view(), name='question'),
+
+
+    url(r'^questions/$',QuestionList.as_view(),name='questions'),
+    url(r'^questionnaire/(?P<pk>\d+)/$',Questionnaire_Detail.as_view(),name='questionnaire'),
+    url(r'^questionnaires/$',QuestionnaireList.as_view(),name='questionnaires'),
 
 
 ]
