@@ -35,3 +35,58 @@ class Group(models.Model):
     class Meta:
         db_table = 'group'
 
+# 演示使用 Django自定义接口  而不使用Django rest framework
+class Questionnaire(models.Model):
+    '''问卷'''
+    title = models.CharField('标题', max_length=100)
+
+    class Meta:
+        verbose_name_plural = '所有问卷'
+
+    def questionnaire_to_dict(self):
+        '''把questionnaire对象转化为字典'''
+        return dict(questionnaire_id=self.id, title=self.title,
+                    questions=[question.question_to_dict() for question in self.questions.all()])
+
+    def __str__(self):
+        return self.title
+
+
+class Question(models.Model):
+    '''问题'''
+    # 所属问卷
+    questionnaire = models.ForeignKey(Questionnaire, verbose_name='所属问卷', related_name='questions', on_delete=models.CASCADE)
+    # 问题标题
+    title = models.CharField('问题', max_length=150)
+    # 是否是多选
+    is_checkbox = models.BooleanField('是否多选', default=False, help_text='是否是多选问题')
+
+    class Meta:
+        verbose_name_plural = '问题'
+
+    def question_to_dict(self):
+        '''把question对象转化为字典'''
+        return dict(title=self.title, choice=[choice.choice_to_dict() for choice in self.choices.all()],
+                    is_checkbox=self.is_checkbox, questionnaire_id=self.questionnaire.id)
+
+    def __str__(self):
+        return self.title
+
+
+class Choice(models.Model):
+    '''选项'''
+    # 所属的问题
+    question = models.ForeignKey(Question, verbose_name='所属问题', related_name='choices', on_delete=models.CASCADE)
+    content = models.CharField('选项内容', max_length=150)
+
+    class Meta:
+        verbose_name_plural = '问题选项'
+
+    def choice_to_dict(self):
+        '''把choice对象转化为字典'''
+        # 选项id,选项所属的问题id,选项内容
+        return dict(id=self.id, question_id=self.question.id, content=self.content)
+
+    def __str__(self):
+        return self.content
+
