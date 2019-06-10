@@ -25,7 +25,7 @@ class GroupSerializers(serializers.ModelSerializer):
 class QuestionnaireSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questionnaire
-        fields = ('title',)
+        fields = ('title',) # 序列化哪些字段
 
 
 class QuestionSerializer(serializers.ModelSerializer):
