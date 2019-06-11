@@ -420,7 +420,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1560149501071</updated>
-      <workItem from="1560149700420" duration="7023000" />
+      <workItem from="1560149700420" duration="7129000" />
     </task>
     <task id="LOCAL-00001" summary="增加Django自定义实现API接口，而不使用Django rest Framework">
       <created>1560156988365</created>
@@ -433,7 +433,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7023000" />
+    <option name="totallyTimeSpent" value="7129000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="187" y="23" width="1822" height="1129" extended-state="0" />
