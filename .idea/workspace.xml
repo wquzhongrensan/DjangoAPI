@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7e8d050-8210-4576-a762-90afc7647219" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/apiApp/ChineseAnalyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiApp/Server_text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiApp/filters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiApp/paginations.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiApp/search_indexes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/apiApp/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/haystack/backends/ChineseAnalyser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/haystack/backends/whoosh_cn_backend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiApp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiApp/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiApp/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiApp/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiApp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiApp/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiApp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiApp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled1/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/untitled1/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled1/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/untitled1/urls.py" afterDir="false" />
-    </list>
+    <list default="true" id="c7e8d050-8210-4576-a762-90afc7647219" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apiApp/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -291,7 +269,7 @@
       <updated>1560149501071</updated>
       <workItem from="1560149700420" duration="7129000" />
       <workItem from="1560215165333" duration="8595000" />
-      <workItem from="1560328978459" duration="1554000" />
+      <workItem from="1560328978459" duration="1886000" />
     </task>
     <task id="LOCAL-00001" summary="增加Django自定义实现API接口，而不使用Django rest Framework">
       <created>1560156988365</created>
@@ -304,13 +282,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17278000" />
+    <option name="totallyTimeSpent" value="17610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="887" y="23" width="2008" height="1129" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23702951" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23702951" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -324,7 +301,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23240116" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23240116" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -517,11 +494,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apiApp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
     </entry>
