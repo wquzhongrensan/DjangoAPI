@@ -12,12 +12,13 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import sys
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-sys.path.join(0, BASE_DIR)
-sys.path.join(0, BASE_DIR, 'apps')
-sys.path.join(0, BASE_DIR, 'extra_apps')
+# sys.path.join(0, BASE_DIR)
+# sys.path.join(0, BASE_DIR, 'apps')
+# sys.path.join(0, BASE_DIR, 'extra_apps')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -41,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',  # 添加rest应用
+    'rest_framework.authtoken',
     'apiApp',  # 添加自己的app
+    'haystack',  # 添加全局搜索应用 放在最后
 ]
 
 MIDDLEWARE = [
@@ -57,11 +60,24 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': {
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
     },
 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10  # 用于分页大小
 }
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR,  'whoosh_index'),
+    }
+}
+
+# 当数据库发生改变时， 自动更新索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
 
 ROOT_URLCONF = 'untitled1.urls'
 

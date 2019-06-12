@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from apiApp.models import TestModel, Snippet, Group, Question, Questionnaire, Choice
+# from apiApp.models import TestModel, Snippet, Group, Question, Questionnaire, Choice, Server
+from .models import *
 
 class TestModelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -68,3 +69,55 @@ class ChoiceSerializer(serializers.ModelSerializer):
 #         # fields = "__all__"
 #         fields = ('role','group','user_type','username')
 
+
+class RegionSerializer(serializers.ModelSerializer):
+    """
+    区域序列化
+    """
+
+    class Meta:
+        model = Region
+        fields = ('id', 'region_name', 'created_time', 'modified_time')
+
+
+class MachineRoomSerializer(serializers.ModelSerializer):
+    """
+    机房序列化
+    """
+
+    class Meta:
+        model = MachineRoom
+        fields = ('id', 'room_name', 'room_code', 'region_id',
+                  'created_time', 'modified_time')
+
+
+class CabinetSerializer(serializers.ModelSerializer):
+    """
+    机柜序列化
+    """
+
+    class Meta:
+        model = Cabinet
+        fields = ('id', 'cabinet_name', 'cabinet_code', 'room_id',
+                  'created_time', 'modified_time')
+
+
+class DeviceSerializer(serializers.ModelSerializer):
+    """
+    设备序列化
+    """
+
+    class Meta:
+        model = Device
+        fields = ('id', 'device_name', 'device_type', 'brand', 'model',
+                  'hardware', 'cabinet_id', 'created_time', 'modified_time')
+
+
+class ServerSerializer(serializers.ModelSerializer):
+    """
+    服务器序列化
+    """
+
+    class Meta:
+        model = Server
+        fields = ('id', 'server_name', 'server_num', 'brand', 'model', 'cpus', 'ram', 'disk', 'product_date', 'status', 'created_time', 'modified_time')

@@ -1,0 +1,4 @@
+{{object.server_name}}
+{{object.server_num}}
+{{object.brand}}
+{{object.model}}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 # 需要导入文件
-from apiApp.models import TestModel, Snippet, Group
+from .models import *
 
 # Register your models here.
 
@@ -18,3 +18,9 @@ class SnippetAdmin(admin.ModelAdmin):
 @admin.register(Group)
 class GroupAdmin(admin.ModelAdmin):
     list_display = ('class_room', 'number')
+
+
+admin.register(Region)
+admin.register(MachineRoom)
+admin.register(Cabinet)
+admin.register(Device)
