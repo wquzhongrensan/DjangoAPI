@@ -40,8 +40,11 @@ class Comment(models.Model):
     user = models.ForeignKey('auth.User', related_name='comments', on_delete=models.CASCADE)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.CharField(max_length=300)
+    # 是对那篇文章的评论
     in_post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    # 是对那条评论的回复评论
     reply_comment = models.ForeignKey('self', related_name='replies', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
+        # 按发布时间的倒序排
         ordering = ('-pub_time',)
