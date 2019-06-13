@@ -1,8 +1,8 @@
 from django.conf.urls import include, url
 from django.urls import path
 from rest_framework import routers
-from rest_framework.routers import DefaultRouter
 from rest_framework.schemas import get_schema_view
+from .views import *
 
 router = routers.DefaultRouter()
 router.register(r'posts', PostViewSet)

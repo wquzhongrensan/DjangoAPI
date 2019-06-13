@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'rest_framework',  # 添加rest应用
     'rest_framework.authtoken',
     'apiApp',  # 添加自己的app
+    'comment',
     'haystack',  # 添加全局搜索应用 放在最后
+
 ]
 
 MIDDLEWARE = [

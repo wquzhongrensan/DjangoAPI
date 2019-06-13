@@ -15,8 +15,13 @@ class Post(models.Model):
     title = models.CharField(max_length=100, blank=True, default="")
     body = models.TextField()
     pub_time = models.DateTimeField(auto_now_add=True)
+    update_time = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField('Tag', related_name='posts', blank=True)
     author = models.ForeignKey('auth.User', related_name='posts', on_delete=models.CASCADE)
+    # 是否允许评论
+    allow_comments = models.BooleanField(verbose_name="允许评论", default=True)
+    # 点赞数目
+    vote_num = models.IntegerField(verbose_name="点赞数量", default=0)
 
     class Meta:
         ordering = ('-pub_time',)
