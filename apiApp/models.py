@@ -99,7 +99,7 @@ class Choice(models.Model):
 #     gender = models.CharField(max_length=6, choices=(("male", u"男"), ("female", u"女")))
 #     mobile = models.CharField(max_length=11, verbose_name="电话")
 #     email = models.EmailField(max_length=100, null=True, verbose_name="邮箱")
-#
+#     other = models.CharField(max_length=50, null=True, verbose_name="其他扩展信息")
 #     class Meta:
 #         verbose_name = "用户"
 #         verbose_name_plural = verbose_name
