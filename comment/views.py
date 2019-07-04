@@ -6,7 +6,7 @@ from .models import *
 from .serializer import *
 from .permissions import *
 
-# 评论相关视图处理
+# 博客相关视图处理
 class PostViewSet(viewsets.ModelViewSet):
     """
     处理 /api/posts/ GET POST , 处理 /api/post/<pk>/ GET PUT PATCH DELETE
@@ -81,7 +81,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet,
 
         return Response(serializer.data)
 
-
+# 评论相关视图处理
 class CommentViewSet(mixins.CreateModelMixin,
                      mixins.RetrieveModelMixin,
                      mixins.ListModelMixin,

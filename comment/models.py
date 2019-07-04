@@ -25,11 +25,13 @@ class Post(models.Model):
     def excerpt(self):
         excerpt = str(self.body)
         if excerpt.__len__() > 50:
+            # 取前面的50个字 加上 省略号
             excerpt = excerpt[:50]+'...'
         return excerpt
 
 
 class Tag(models.Model):
+    # 标签的名字
     name = models.CharField(max_length=50)
 
     def __str__(self):
