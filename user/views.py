@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Follow, UserProfile
 
 
-# 获取所有关注者的文章列表 分也返回
+# 获取所有关注者的文章列表 分页返回
 def followed(request):
     user = request.user
     all_feeds = Feed.get_feeds().filter(user__in=Follow.user_followed(user))
@@ -21,9 +21,9 @@ def followed(request):
 
 # 注册功能
 def register(request):
-    if request.method == 'POST':
+    if request.method == 'POST':
 
-        form = RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
@@ -34,7 +34,7 @@ def register(request):
 
             # 如果直接使用objects.create()方法后不需要使用save()
               user_profile = UserProfile(user=user)
-            user_profile.save()
+              user_profile.save()
 
             return HttpResponseRedirect("/accounts/login/")
 
@@ -50,7 +50,7 @@ def login(request):
         if form.is_valid():
            username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-
+            # 先认证用户是否存在 + 若存在就开始登录
             user = auth.authenticate(username=username, password=password)
 
             if user is not None and user.is_active:
@@ -58,10 +58,11 @@ def login(request):
                return HttpResponseRedirect(reverse('users:profile', args=[user.id]))
 
             else:
-                # 登陆失败
+                # 登陆失败 跳转到登录页面
                  return render(request, 'users/login.html', {'form': form,
                                'message': 'Wrong password. Please try again.'})
     else:
+        # 是get 请求则直接显示登录表单子页面
         form = LoginForm()
 
     return render(request, 'users/login.html', {'form': form})

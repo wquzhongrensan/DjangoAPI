@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Post(models.Model):
     """
     文章的存储model
@@ -57,6 +58,7 @@ class Post(models.Model):
         hotdoc = models.article.objects.order_by("-views")[0:5]
         return render(request, "articlecont.html", {"articledata": articledata, 'hotdoc': hotdoc})
 
+
 class Tag(models.Model):
     # 标签的名字
     name = models.CharField(max_length=50)
@@ -69,6 +71,7 @@ class Comment(models.Model):
     user = models.ForeignKey('auth.User', related_name='comments', on_delete=models.CASCADE)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.CharField(max_length=300)
+
     # 是对那篇文章的评论
     in_post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     # 是对那条评论的回复评论

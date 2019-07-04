@@ -101,3 +101,21 @@ class Follow(models.Model):
 
     def __str__(self):
         return f'{self.follower} follow {self.followed}'
+
+
+class Article(models.Model):
+
+    title = models.CharField('标题', max_length=70)
+    keywords = models.CharField('文章关键词', max_length=120, blank=True, null=True)
+    excerpt = models.TextField('摘要', max_length=200, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='分类', blank=True, null=True)
+    body = models.TextField('内容')
+    user = models.ForeignKey(Userinfo, on_delete=models.CASCADE, verbose_name='作者')
+    views = models.PositiveIntegerField('阅读量', default=0)
+    top = models.IntegerField(choices=[(0, '否'), (1, '是'), ], default=0, verbose_name='是否推荐')
+    created_time = models.DateTimeField('发布时间', auto_now_add=True)
+    modified_time = models.DateTimeField('修改时间', auto_now=True)
+
+    class Meta:
+        verbose_name = '文章'verbose_name_plural = '文章'def __str__(self):
+        return self.title
