@@ -16,6 +16,9 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# 引入 extra_apps的使用
+# sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
+
 # sys.path.join(0, BASE_DIR)
 # sys.path.join(0, BASE_DIR, 'apps')
 # sys.path.join(0, BASE_DIR, 'extra_apps')
@@ -46,6 +49,11 @@ INSTALLED_APPS = [
     'apiApp',  # 添加自己的app
     'comment',
     'haystack',  # 添加全局搜索应用 放在最后
+    'user',
+    # 安装方式 pip install git+git://github.com/sshwsfc/xadmin.git@django2
+    'xadmin',
+    #  xadmin 的依赖库
+    'crispy_forms',
 
 ]
 

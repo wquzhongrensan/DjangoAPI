@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import xadmin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # 使用xadmin的后台管理
+    path('xadmin/', xadmin.site.urls),
     path('', include('apiApp.urls')),
     path('api/comment', include('comment.urls')),
-    path('^accounts/', include('user.urls')),
+    # path('^accounts/', include('user.urls')),
 ]
