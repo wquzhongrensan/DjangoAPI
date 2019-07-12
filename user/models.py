@@ -18,28 +18,7 @@ gender = (
     ("secret", u"保密")
 )
 
-# 继承AbstractUser实现
-class UserProfile(AbstractUser):
-
-    """ 用户 """
-    name = models.CharField(max_length=30, null=True, blank=True, verbose_name="姓名")
-    birthday = models.DateField(null=True, blank=True, verbose_name="出生年月")
-    gender = models.CharField(max_length=6, choices=gender)
-    mobile = models.CharField(max_length=11, verbose_name="电话")
-    email = models.EmailField(max_length=100, null=True, verbose_name="邮箱")
-    other = models.CharField(max_length=50, null=True, verbose_name="其他扩展信息")
-    isVip = models.CharField(max_length=1, null=True, verbose_name="是否是VIP会员")
-    #  目前会员分为： 1.普通用户  2.vip账号  3.铂金账号 (其他等级)
-    memberLevel = models.CharField(verbose_name=u'会员等级', max_length=32,
-                                   choices=member_level_choice, blank=True)
-
-    class Meta:
-        verbose_name = "用户"
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return self.name
-
+#  壹言的用户模型
 # django自带的user model只有下面这些字段 9个字段
 # username：用户名
 # email: 电子邮件
@@ -50,9 +29,52 @@ class UserProfile(AbstractUser):
 # is_staff: 是否为员工。默认是False
 # is_superuser: 是否为管理员。默认是False
 # date_joined: 加入日期。系统自动生成。
+class UserProfile(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    org = models.CharField('Organization', max_length=128, blank=True)
+    telephone = models.CharField('Telephone', max_length=50, blank=True)
+    mod_date = models.DateTimeField('Last modified', auto_now=True)
+    sign = models.CharField(max_length=200, null=True, verbose_name="用户签名")
+
+    #  目前会员分为： 1.普通用户  2.vip账号  3.铂金账号 (其他等级)
+    memberLevel = models.CharField(verbose_name=u'会员等级', max_length=32,
+                                       choices=member_level_choice, blank=True)
+
+    class Meta:
+        verbose_name = 'User Profile'
+
+    def __str__(self):
+        return "{}".format(self.user.__str__())
+
+
+# 继承AbstractUser实现
+# class UserProfile(AbstractUser):
+#
+#     """ 用户 """
+#     name = models.CharField(max_length=30, null=True, blank=True, verbose_name="姓名")
+#     birthday = models.DateField(null=True, blank=True, verbose_name="出生年月")
+#     gender = models.CharField(max_length=6, choices=gender)
+#     mobile = models.CharField(max_length=11, verbose_name="电话")
+#     email = models.EmailField(max_length=100, null=True, verbose_name="邮箱")
+#     other = models.CharField(max_length=50, null=True, verbose_name="其他扩展信息")
+#     isVip = models.CharField(max_length=1, null=True, verbose_name="是否是VIP会员")
+#     #  目前会员分为： 1.普通用户  2.vip账号  3.铂金账号 (其他等级)
+#     memberLevel = models.CharField(verbose_name=u'会员等级', max_length=32,
+#                                    choices=member_level_choice, blank=True)
+#
+#     class Meta:
+#         verbose_name = "用户"
+#         verbose_name_plural = verbose_name
+#
+#     def __str__(self):
+#         return self.name
+
+
 
 # 扩展系统自带user 方式实现自定义user模型
 class UserProfile(models.Model):
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     org = models.CharField('Organization', max_length=128, blank=True)
     telephone = models.CharField('Telephone', max_length=50, blank=True)
@@ -103,19 +125,22 @@ class Follow(models.Model):
         return f'{self.follower} follow {self.followed}'
 
 
-class Article(models.Model):
-
-    title = models.CharField('标题', max_length=70)
-    keywords = models.CharField('文章关键词', max_length=120, blank=True, null=True)
-    excerpt = models.TextField('摘要', max_length=200, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='分类', blank=True, null=True)
-    body = models.TextField('内容')
-    user = models.ForeignKey(Userinfo, on_delete=models.CASCADE, verbose_name='作者')
-    views = models.PositiveIntegerField('阅读量', default=0)
-    top = models.IntegerField(choices=[(0, '否'), (1, '是'), ], default=0, verbose_name='是否推荐')
-    created_time = models.DateTimeField('发布时间', auto_now_add=True)
-    modified_time = models.DateTimeField('修改时间', auto_now=True)
-
-    class Meta:
-        verbose_name = '文章'verbose_name_plural = '文章'def __str__(self):
-        return self.title
+# class Article(models.Model):
+#
+#     title = models.CharField('标题', max_length=70)
+#     keywords = models.CharField('文章关键词', max_length=120, blank=True, null=True)
+#     excerpt = models.TextField('摘要', max_length=200, blank=True)
+#     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='分类', blank=True, null=True)
+#     body = models.TextField('内容')
+#     user = models.ForeignKey(Userinfo, on_delete=models.CASCADE, verbose_name='作者')
+#     views = models.PositiveIntegerField('阅读量', default=0)
+#     top = models.IntegerField(choices=[(0, '否'), (1, '是'), ], default=0, verbose_name='是否推荐')
+#     created_time = models.DateTimeField('发布时间', auto_now_add=True)
+#     modified_time = models.DateTimeField('修改时间', auto_now=True)
+#
+#     class Meta:
+#         verbose_name = '文章'
+#         verbose_name_plural = '文章'
+#
+#     def __str__(self):
+#         return self.title
