@@ -1,0 +1,23 @@
+{
+	"uid": 1189269,
+	"uid2": 801649943433446401,
+	"uuid": "7637c091-81e8-48ce-b95c-e1004713018b",
+	"nickname": "198****1278",
+	"avatar": "https://unsplash.it/128/128",
+	"is_member": false,
+	"member_expired_at": null,
+	"gender": null,
+	"points": 511,
+	"birthday": null,
+	"token": "ef6c1aa61eb8bd9a334d384edd052dd9",
+	"expired_in": 1563583879,
+	"sentences_count": 0,
+	"subscriptions_count": 5,
+	"collections_count": 0,
+	"favourites_count": 8,
+	"roles": ["ordinary", "ordinary"],
+	"youzan_access_token": null,
+	"youzan_cookie_key": null,
+	"youzan_cookie_value": null,
+	"is_bind_phone": true
+}
