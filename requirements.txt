@@ -13,7 +13,7 @@ jieba==0.39
 Jinja2==2.10.1
 Markdown==3.1.1
 MarkupSafe==1.1.1
-Pygments==2.4.2
+Pygments==2.7.4
 PyJWT==1.7.1
 pytz==2019.1
 requests==2.22.0
